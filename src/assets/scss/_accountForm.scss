@@ -1,0 +1,12 @@
+.account-form{
+  background: $gray-200;
+  .form-title{
+    color: $gray-700
+  }
+}
+.invalid-input{
+  border: 2px solid $red;
+}
+.invalid-label{
+  color: $red;
+}

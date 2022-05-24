@@ -1,0 +1,21 @@
+.main-header{
+  background: $gray-900;
+}
+
+.dash-nav{
+  background: $primary;
+  min-width: 220px;
+  max-width: 220px;
+  list-style: none;
+  li{
+    list-style: none;
+    transition: all 0.3s;
+    a{
+      color: $white;
+    }
+    &:hover{
+      background: rgba(255, 255, 255, 0.3) !important;
+      transition: all 0.3s;
+    }
+  }
+}

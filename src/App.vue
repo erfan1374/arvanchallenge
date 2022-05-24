@@ -11,8 +11,4 @@
 
 <style lang="scss">
   @import "assets/scss/style";
-  .subTotal-section{
-    background: #ffffd3;
-  }
-
 </style>

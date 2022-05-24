@@ -8,6 +8,8 @@ import Api from './plugins/api'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { fas as solid } from '@fortawesome/free-solid-svg-icons'
+import VeeValidate from 'vee-validate'
+
 // Make BootstrapVue available throughout your project
 library.add(solid)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
@@ -17,16 +19,14 @@ Vue.use(IconsPlugin)
 import router from './router'
 import App from './App'
 import Meta from 'vue-meta'
+import Mixin from './plugins/global-mixin'
 
-import { StripePlugin } from '@vue-stripe/vue-stripe';
-import {stripeToken} from "./config";
-const options = {
-  pk: stripeToken
-};
 Vue.config.productionTip = false
-Vue.use(StripePlugin, options);
 Vue.use(Api)
 Vue.use(Meta)
+Vue.use(Mixin)
+Vue.use(VeeValidate, {fieldsBagName: 'veeFields'})
+
 
 // router.beforeEach((to, from, next) => {
 //   next('/ext/billPay')

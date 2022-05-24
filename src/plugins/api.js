@@ -1,4 +1,4 @@
-import api from '@/restApi'
+import api from '@/api'
 
 export default {
   install (Vue) {

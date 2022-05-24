@@ -1,35 +1,26 @@
 <template>
+  <div>
     <pub v-if="isPublic"></pub>
+    <cp v-else/>
+  </div>
 </template>
 
 <script>
-    import pub from './public'
-    export default {
-        name: "layout",
-        components: {pub},
-        computed: {
-            isPublic () {
-                return this.$route.meta && this.$route.meta.public
-            }
-        },
-        metaInfo () {
-            return {
-                title: this.$route.meta && this.$route.meta.title
-            }
-        },
-        created() {
-
-            // const query = this.$route.query.q
-            // this.$router.push(`/ext/billPay?q=${query}`)
-        }
+  import pub from './public'
+  import cp from "./cp";
+  export default {
+    name: "layout",
+    components: {pub, cp},
+    computed: {
+      isPublic () {
+        return this.$route.meta && this.$route.meta.public
+      }
+    },
+    metaInfo () {
+      return {
+        title: this.$route.meta && this.$route.meta.title
+      }
     }
+  }
 </script>
 
-<style>
-    /*.subTotal-section{*/
-    /*    background: #ffffd3;*/
-    /*}*/
-    /*body{*/
-    /*    background: red !important;*/
-    /*}*/
-</style>
