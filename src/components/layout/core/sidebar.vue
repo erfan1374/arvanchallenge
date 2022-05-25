@@ -36,7 +36,7 @@
     },
     mounted() {
       this.items.forEach(item => {
-        this.$set(item, 'open', false)
+        this.$set(item, 'open', true)
       })
     },
     methods: {

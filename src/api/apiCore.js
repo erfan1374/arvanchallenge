@@ -94,8 +94,8 @@ export default class ApiCore {
   _request (o) {
     o.path = this._path
 
-    // const account = this._store.state.$account
-    // if (account) o.accessToken = account.accessToken
+    const account = this._store.state.$account
+    if (account) o.accessToken = account.accessToken
 
     return this._sendRequest(o)
   }

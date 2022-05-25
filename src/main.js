@@ -23,12 +23,20 @@ import Config from './plugins/config'
 import Meta from 'vue-meta'
 import Mixin from './plugins/global-mixin'
 import store from './store'
+import * as types from './store/types'
+import {get as getData} from '@/lib/local-storage'
+
 Vue.config.productionTip = false
 Vue.use(Api)
 Vue.use(Meta)
 Vue.use(Mixin)
 Vue.use(Config)
 Vue.use(VeeValidate, {fieldsBagName: 'veeFields'})
+
+let account = getData(types.ACCOUNT_COOKIE)
+if (account) {
+  store.commit(types.SET_ACCOUNT, account)
+}
 
 
 // router.beforeEach((to, from, next) => {
