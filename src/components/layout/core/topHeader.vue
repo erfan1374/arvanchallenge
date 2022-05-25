@@ -2,7 +2,9 @@
   <header class="main-header text-white p-3 d-flex flex-row justify-content-between align-items-center">
     <div>
       <span class="h6 mb-0">Arvan Challenge</span>
-      <span class="px-2">Current user name</span>
+      <span v-if="$account" class="px-2">
+        {{$account.username}}
+      </span>
     </div>
     <c-button text="Logout" :progressing="progressing" variant="outline-info" size="sm" @submit="logout"/>
   </header>
@@ -11,6 +13,8 @@
 <script>
   import CButton from "../../shared/CButton";
   import * as types from '@/store/types'
+  import {mapState} from 'vuex'
+
   export default {
     name: "topHeader",
     components: {CButton},
@@ -18,6 +22,9 @@
       return {
         progressing: false
       }
+    },
+    computed: {
+      ...mapState(['$account']),
     },
     methods: {
       logout () {

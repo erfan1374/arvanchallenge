@@ -29,7 +29,7 @@
                 id="email"
                 name="email"
                 v-model="model.user.email"
-                v-validate="'required'"
+                v-validate="'required|email'"
               ></b-form-input>
               <b-form-invalid-feedback class="mt-2" :state="!errors.has('email') && null">
                 {{ errors.collect('email')[0] }}

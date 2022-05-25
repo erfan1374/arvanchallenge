@@ -1,5 +1,5 @@
 import axios from 'axios'
-// import * as types from '@/store/types'
+import * as types from '@/store/types'
 import { serialize } from '@/lib/util'
 import config from 'SrcConfig'
 import Qs from 'qs'
@@ -31,7 +31,7 @@ export default class ApiCore {
   }
 
   _logout () {
-    // this._store.commit(types.LOGOUT)
+    this._store.commit(types.LOGOUT)
     // window.location.assign('/')
   }
 
@@ -63,16 +63,12 @@ export default class ApiCore {
       }
     }
 
-    if (o.accessToken) {
-      req.headers = { Authorization: `Token ${ o.accessToken}`}
+    if (o.token) {
+      req.headers = { Authorization: `Token ${ o.token}`}
     }
 
     return axios(req)
       .then(res => {
-        if (o.showProgress) {
-          this._setUploadProgress(0)
-          this._setDownloadProgress(0)
-        }
         return res.data
       })
       .catch(err => {
@@ -81,8 +77,7 @@ export default class ApiCore {
         }
         else if (err.response) {
           if (err.response.status === 401) {
-            // this._logout()
-            console.log('please call log out api')
+            this._logout()
           }
           throw err.response
         } else {
@@ -94,8 +89,12 @@ export default class ApiCore {
   _request (o) {
     o.path = this._path
 
+    // const account = this._store.state.$account
+    // console.log(account)
+    // if (account) o.accessToken = account.accessToken
+
     const account = this._store.state.$account
-    if (account) o.accessToken = account.accessToken
+    if (account) o.token = account.token
 
     return this._sendRequest(o)
   }

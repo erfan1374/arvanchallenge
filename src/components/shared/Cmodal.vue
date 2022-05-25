@@ -2,12 +2,12 @@
   <span :class="{'d-inline-block': tag}">
     <slot name="activator" :show="show" :hide="hide" :attrs="tagAttrs">
       <component :is="tag" v-bind="tagAttrs" @click.stop="show">
-        {{ label }}
         <font-awesome-icon
             v-if="icon"
             :icon="icon"
-            :class="[iconClass, {'align-middle ml-1': $dir.rtl, 'mr-1': $dir.ltr}]"
+            :class="[iconClass, 'align-middle ml-1']"
         />
+        {{ label }}
       </component>
     </slot>
 
@@ -15,20 +15,13 @@
       <slot :open="open" :show="show" :hide="hide"></slot>
       <template #modal-footer>
         <slot name="actions" :submit="submit" :hide="hide">
-          <b-row class="flex-grow-1">
-            <b-col cols="6">
-              <b-btn variant="warning" block class="text-nowrap" :disabled="progressing" @click="submit">
-                {{confirmLabel}}
-                <font-awesome-icon v-if="progressing" spin icon="circle-notch" class="text-black align-middle mx-1"/>
-              </b-btn>
-            </b-col>
-
-            <b-col cols="6">
-              <b-btn variant="danger" block class="text-nowrap cancel-btn-cmodal" @click="hide">
-                {{cancelLabel}}
-              </b-btn>
-            </b-col>
-          </b-row>
+          <b-btn variant="outline-secondary" block class="text-nowrap px-3" @click="hide">
+            {{cancelLabel}}
+          </b-btn>
+          <b-btn variant="danger" block class="text-nowrap px-3" :disabled="loading" @click="submit">
+            {{confirmLabel}}
+            <font-awesome-icon v-if="loading" spin icon="circle-notch" class="text-black align-middle mx-1"/>
+          </b-btn>
         </slot>
       </template>
     </b-modal>
@@ -44,7 +37,7 @@
             iconClass: {type: [Object, String]},
             disabled: {type: Boolean, default: false},
             tag: {type: [String, Boolean], default: 'b-btn'},
-            progressing: {type: Boolean, default: false},
+            loading: {type: Boolean, default: false},
             tagAttrs: {
                 type: Object,
                 default: () => ({})
@@ -55,11 +48,11 @@
             },
             cancelLabel: {
               type: String,
-              default: 'Never mind'
+              default: 'No'
             },
             confirmLabel: {
               type: String,
-              default: 'Accept'
+              default: 'Yes'
             }
         },
         inheritAttrs: false,

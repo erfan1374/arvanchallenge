@@ -4,14 +4,20 @@ const Edit = () => import(/* webpackChunkName: "edit article" */ '@/components/a
 export default {
   name: 'article',
   path: 'dashboard/articles',
-  redirect: 'dashboard/articles/index',
+  redirect: 'dashboard/articles',
   meta: {label: 'articles', auth: 'articles'},
   component: {
     render (c) { return c('router-view') }
   },
   children: [
     {
-      path: 'index',
+      path: '',
+      meta: {label: 'index', auth: true, title: "Articles"},
+      component: Index,
+      props: true
+    },
+    {
+      path: 'page/:page',
       meta: {label: 'index', auth: true, title: "Articles"},
       component: Index,
       props: true
@@ -23,7 +29,7 @@ export default {
       props: true
     },
     {
-      path: 'edit/:id',
+      path: 'edit/:slug',
       meta: {label: 'edit', auth: true, title: "Edit article"},
       component: Edit,
       props: true

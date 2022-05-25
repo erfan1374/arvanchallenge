@@ -3,7 +3,7 @@
     <top-header/>
     <div class="d-flex">
       <sidebar :items="items"/>
-      <main class="p-2 w-100">
+      <main class="p-3 w-100">
         <router-view></router-view>
       </main>
     </div>
