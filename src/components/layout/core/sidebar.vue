@@ -2,7 +2,7 @@
   <nav class="dash-nav vh-100">
     <ul class="px-0">
       <template v-for="item in items">
-        <li class="p-3 text-white d-flex justify-content-between align-items-center" style="cursor:pointer;" :key="item.title" @click="toggleMenu(item)">
+        <li class="p-3 text-white d-flex justify-content-between align-items-center" style="cursor:pointer;" :key="item.id" @click="toggleMenu(item)">
 
           <template v-if="item.children">
             <span>{{item.title}}</span>

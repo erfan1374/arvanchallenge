@@ -1,7 +1,7 @@
 <template>
-  <b-btn v-bind="$attrs" :disabled="progressing" @click="submit">
+  <b-btn v-bind="$attrs" :disabled="loading" @click="submit">
     {{text}}
-    <font-awesome-icon v-if="progressing" spin icon="circle-notch" class="align-middle"/>
+    <font-awesome-icon v-if="loading" spin icon="circle-notch" class="align-middle"/>
   </b-btn>
 </template>
 
@@ -13,7 +13,7 @@
         type: String,
         default: 'Submit'
       },
-      progressing: {
+      loading: {
         type: Boolean,
         default: false
       }

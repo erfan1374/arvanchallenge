@@ -10,6 +10,7 @@
 
 <script>
   import CButton from "../../shared/CButton";
+  import * as types from '@/store/types'
   export default {
     name: "topHeader",
     components: {CButton},
@@ -20,6 +21,7 @@
     },
     methods: {
       logout () {
+        this.$store.commit(types.LOGOUT)
         this.$router.push('/login')
       }
     }

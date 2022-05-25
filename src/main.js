@@ -18,13 +18,16 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 import router from './router'
 import App from './App'
+import Config from './plugins/config'
+
 import Meta from 'vue-meta'
 import Mixin from './plugins/global-mixin'
-
+import store from './store'
 Vue.config.productionTip = false
 Vue.use(Api)
 Vue.use(Meta)
 Vue.use(Mixin)
+Vue.use(Config)
 Vue.use(VeeValidate, {fieldsBagName: 'veeFields'})
 
 
@@ -36,6 +39,7 @@ Vue.use(VeeValidate, {fieldsBagName: 'veeFields'})
 //   return !!Object.keys(route.query).length
 // }
 new Vue({
+  store,
   router,
   render: h => h(App),
 }).$mount('#app')

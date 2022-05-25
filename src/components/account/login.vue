@@ -45,7 +45,7 @@
             </b-form-group>
 
 
-            <c-button :progressing="progressing" variant="primary" text="Login" class="w-100 mb-3" @submit="submit"/>
+            <c-button :loading="progressing" variant="primary" text="Login" class="w-100 mb-3" @submit="submit"/>
 
             <router-link to="/register" class="text-decoration-none text-dark">
               Don't have account ? <span class="fw-bold">Register Now</span>
@@ -60,6 +60,7 @@
 
 <script>
   import CButton from "../shared/CButton";
+  import * as types from '@/store/types'
   export default {
     name: "login",
     components: {CButton},
@@ -75,12 +76,13 @@
     },
     methods: {
       submit () {
-        this.$showSuccess('success')
         this.$validator.validateAll().then(proceed => {
           if (proceed) {
             this.progressing = true
             return this.$api.users.login(this.model).then(res => {
-              console.log(res)
+              this.progressing = false
+              this.$store.commit(types.SET_ACCOUNT, res.user)
+              this.$router.replace('/dashboard')
             }).catch(this.$fail)
           }
         })

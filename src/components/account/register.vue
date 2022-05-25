@@ -57,7 +57,7 @@
             </b-form-group>
 
 
-            <c-button text="Register" :progressing="progressing" @submit="submit" variant="primary" class="mb-3 w-100"/>
+            <c-button text="Register" :loading="progressing" @submit="submit" variant="primary" class="mb-3 w-100"/>
 
             <router-link to="/login" class="text-decoration-none text-dark">
               Already Registered ? <span class="fw-bold">Login</span>
