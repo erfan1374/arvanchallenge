@@ -32,7 +32,6 @@ export default class ApiCore {
 
   _logout () {
     this._store.commit(types.LOGOUT)
-    // window.location.assign('/')
   }
 
 
@@ -76,7 +75,7 @@ export default class ApiCore {
           this._setOfflineFlag(true)
         }
         else if (err.response) {
-          if (err.response.status === 401) {
+          if (err.response.status === 401 || err.response.status === 403) {
             this._logout()
           }
           throw err.response

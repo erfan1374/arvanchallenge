@@ -130,6 +130,7 @@
         return this.$api.articles.delete(slug).then(() => {
           this.progressing = false
           cModalFunctions.hide()
+          this.$success('Article deleted successfully')
           this.getAll()
         }).catch(this.$fail)
       }

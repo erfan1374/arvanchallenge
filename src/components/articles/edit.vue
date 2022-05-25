@@ -126,8 +126,7 @@
           if (proceed) {
             this.progressing = true
             return this.$api.articles.update(this.model, this.slug).then(() => {
-              this.progressing = false
-              this.$router.push('/dashboard/articles')
+              this.$success('Well done!! Article updated successfully', '/dashboard/articles')
             }).catch(this.$fail)
           }
         })

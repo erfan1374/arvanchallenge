@@ -19,7 +19,7 @@ Vue.use(IconsPlugin)
 import router from './router'
 import App from './App'
 import Config from './plugins/config'
-
+import Snotify from 'vue-snotify'
 import Meta from 'vue-meta'
 import Mixin from './plugins/global-mixin'
 import store from './store'
@@ -29,6 +29,7 @@ import {get as getData} from '@/lib/local-storage'
 Vue.config.productionTip = false
 Vue.use(Api)
 Vue.use(Meta)
+Vue.use(Snotify)
 Vue.use(Mixin)
 Vue.use(Config)
 Vue.use(VeeValidate, {fieldsBagName: 'veeFields'})

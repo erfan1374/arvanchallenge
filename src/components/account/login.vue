@@ -66,6 +66,7 @@
     components: {CButton},
     data () {
       return {
+        progressing: false,
         model: {
           user: {
             email: null,
@@ -82,7 +83,6 @@
             return this.$api.users.login(this.model).then(res => {
               this.progressing = false
               this.$store.commit(types.SET_ACCOUNT, res.user)
-              // this.$router.replace('/dashboard')
               let go = this.$route.query.go || this.$config.homeUrl
               this.$router.replace(go)
             }).catch(this.$fail)

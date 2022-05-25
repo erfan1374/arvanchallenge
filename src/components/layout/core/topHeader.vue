@@ -3,7 +3,7 @@
     <div>
       <span class="h6 mb-0">Arvan Challenge</span>
       <span v-if="$account" class="px-2">
-        {{$account.username}}
+        Welcome {{$account.username}}
       </span>
     </div>
     <c-button text="Logout" :progressing="progressing" variant="outline-info" size="sm" @submit="logout"/>

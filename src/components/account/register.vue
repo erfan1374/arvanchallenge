@@ -72,6 +72,7 @@
 
 <script>
   import CButton from "../shared/CButton";
+  import * as types from '@/store/types'
   export default {
     name: "register",
     components: {CButton},
@@ -94,11 +95,10 @@
             this.progressing = true
             return this.$api.users.register(this.model).then(res => {
               this.progressing = false
-              console.log(res)
-            }).catch(err => {
-              this.progressing = false
-              console.log(err)
-            })
+              this.$store.commit(types.SET_ACCOUNT, res.user)
+              let go = this.$config.homeUrl
+              this.$router.replace(go)
+            }).catch(this.$fail)
           }
         })
       }

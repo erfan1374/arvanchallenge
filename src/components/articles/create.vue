@@ -84,7 +84,8 @@
           ></b-form-input>
         </b-form-group>
         <b-card body-class="pb-0">
-          <b-form-group v-slot="{ ariaDescribedby }">
+          <c-loading class="mb-3" v-if="initializing"/>
+          <b-form-group v-else v-slot="{ ariaDescribedby }">
             <b-form-checkbox-group
               id="tags-groups"
               v-model="model.article.tagList"
@@ -105,12 +106,15 @@
 <script>
   import modelForm from "./modelForm";
   import CButton from "../shared/CButton";
+  import CLoading from "../shared/CLoading";
   export default {
     name: "create",
-    components: {CButton},
+    components: {CLoading, CButton},
     mixins: [modelForm],
     mounted() {
-      this.getAllTags()
+      this.getAllTags().then(() => {
+        this.initializing = false
+      })
     },
     methods: {
       submit () {
@@ -118,8 +122,7 @@
           if (proceed) {
             this.progressing = true
             return this.$api.articles.create(this.model).then(() => {
-              this.progressing = false
-              this.$router.push('/dashboard/articles')
+              this.$success('Well done!! Article created successfully', '/dashboard/articles')
             }).catch(this.$fail)
           }
         })
