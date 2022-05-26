@@ -1,5 +1,5 @@
 <template>
-  <header class="main-header text-white p-3 d-flex flex-row justify-content-between align-items-center">
+  <header class="main-header text-white position-sticky p-3 d-flex flex-row justify-content-between align-items-center" style="top: 0">
     <div>
       <span class="h6 mb-0">Arvan Challenge</span>
       <span v-if="$account" class="px-2">

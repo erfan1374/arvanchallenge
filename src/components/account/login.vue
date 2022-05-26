@@ -47,9 +47,9 @@
 
             <c-button :loading="progressing" variant="primary" text="Login" class="w-100 mb-3" @submit="submit"/>
 
-            <router-link to="/register" class="text-decoration-none text-dark">
+            <b-link to="/register" class="text-decoration-none text-dark">
               Don't have account ? <span class="fw-bold">Register Now</span>
-            </router-link>
+            </b-link>
 
           </b-form>
         </b-col>

@@ -3,7 +3,7 @@
     <b-container>
       <b-row class="justify-content-center">
         <b-col cols="12" md="6" lg="4">
-          <b-form class="account-form p-3">
+          <b-form class="account-form p-3" @submit="submit">
             <div class="form-title text-center py-4 h1">REGISTER</div>
 
             <b-form-group class="mb-3" label="User" label-for="username"
@@ -59,9 +59,9 @@
 
             <c-button text="Register" :loading="progressing" @submit="submit" variant="primary" class="mb-3 w-100"/>
 
-            <router-link to="/login" class="text-decoration-none text-dark">
+            <b-link to="/login" class="text-decoration-none text-dark">
               Already Registered ? <span class="fw-bold">Login</span>
-            </router-link>
+            </b-link>
 
           </b-form>
         </b-col>

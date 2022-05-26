@@ -19,6 +19,9 @@
         sort-by="Submitted"
         sort-desc
       >
+        <template #cell(index)="data">
+          {{(page - 1) * size + data.index + 1}}
+        </template>
         <template v-slot:cell(author)="{item}">
           @{{item.author.username}}
         </template>
@@ -95,6 +98,7 @@
         size: 10,
         page: 1,
         fields: [
+          { key: 'index', label: '#', class: 'align-middle'},
           { key: 'title', label: 'Title', class: 'align-middle'},
           { key: 'author', label: 'Author', class: 'align-middle'},
           { key: 'tagList', label: 'Tags', class: 'align-middle'},

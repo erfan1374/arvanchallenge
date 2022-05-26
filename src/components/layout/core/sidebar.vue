@@ -2,17 +2,18 @@
   <nav class="dash-nav vh-100">
     <ul class="px-0">
       <template v-for="item in items">
-        <li class="p-3 text-white d-flex justify-content-between align-items-center" style="cursor:pointer;" :key="item.id" @click="toggleMenu(item)">
-
+        <li class="text-white d-flex" style="cursor:pointer;" :key="item.id" @click="toggleMenu(item)">
           <template v-if="item.children">
-            <span>{{item.title}}</span>
-            <font-awesome-icon class="" v-if="item.children" :icon="item.open ? 'caret-up' : 'caret-down'"/>
+            <div class="p-3 w-100 d-flex justify-content-between align-items-center">
+              {{item.title}}
+              <font-awesome-icon v-if="item.children" :icon="item.open ? 'caret-up' : 'caret-down'"/>
+            </div>
           </template>
 
           <template v-else>
-            <router-link class="text-decoration-none" :to="item.link">
+            <b-link active-class="active-link" exact class="text-decoration-none p-3 w-100" :to="item.link">
               {{item.title}}
-            </router-link>
+            </b-link>
           </template>
 
         </li>
