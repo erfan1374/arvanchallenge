@@ -1,8 +1,8 @@
 <template>
   <div>
-    <top-header/>
+    <top-header @toggleMenu="showSideBar = !showSideBar"/>
     <div class="d-flex">
-      <sidebar :items="items"/>
+      <sidebar :items="items" :class="showSideBar ? 'open-side' : 'close-side'"/>
       <main class="p-3 w-100">
         <router-view></router-view>
       </main>
@@ -19,7 +19,8 @@
     components: {Sidebar, TopHeader},
     data () {
       return {
-        items: _nav
+        items: _nav,
+        showSideBar: true
       }
     },
     created() {

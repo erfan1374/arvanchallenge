@@ -1,6 +1,7 @@
 <template>
   <b-btn v-bind="$attrs" :disabled="loading" @click="submit">
     {{text}}
+    <slot></slot>
     <font-awesome-icon v-if="loading" spin icon="circle-notch" class="align-middle"/>
   </b-btn>
 </template>

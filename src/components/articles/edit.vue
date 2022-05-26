@@ -1,105 +1,107 @@
 <template>
-  <b-container>
+  <b-container fluid>
     <c-loading v-if="initializing"/>
-    <b-row v-else>
-      <b-col cols="12">
-        <div>
-          <h2>Edit Article</h2>
-        </div>
-      </b-col>
-      <b-col cols="10" md="8">
-        <b-form>
-          <b-form-group
-            class="mb-3"
-            label="Title"
-            label-for="Title"
-            :label-class="{'mb-2': true, 'invalid-label': errors.collect('Title')[0]}"
-          >
-            <b-form-input
-              id="Title"
-              :class="{'invalid-input': errors.collect('Title')[0]}"
-              name="Title"
-              v-model="model.article.title"
-              v-validate="'required'"
-            ></b-form-input>
-
-            <b-form-invalid-feedback class="mt-2" :state="!errors.has('Title') && null">
-              {{ errors.collect('Title')[0] }}
-            </b-form-invalid-feedback>
-          </b-form-group>
-
-          <b-form-group
-            class="mb-3"
-            label="Description"
-            label-for="Description"
-            :label-class="{'mb-2': true, 'invalid-label': errors.collect('Description')[0]}"
-          >
-            <b-form-input
-              id="Description"
-              :class="{'invalid-input': errors.collect('Description')[0]}"
-              name="Description"
-              v-model="model.article.description"
-              v-validate="'required'"
-            ></b-form-input>
-
-            <b-form-invalid-feedback class="mt-2" :state="!errors.has('Description') && null">
-              {{ errors.collect('Description')[0] }}
-            </b-form-invalid-feedback>
-          </b-form-group>
-
-          <b-form-group
-            class="mb-3"
-            label="Body"
-            label-for="Body"
-            :label-class="{'mb-2': true, 'invalid-label': errors.collect('Body')[0]}"
-          >
-            <b-textarea
-              id="Body"
-              :class="{'invalid-input': errors.collect('Body')[0]}"
-              name="Body"
-              v-model="model.article.body"
-              v-validate="'required'"
-            ></b-textarea>
-
-            <b-form-invalid-feedback class="mt-2" :state="!errors.has('Body') && null">
-              {{ errors.collect('Body')[0] }}
-            </b-form-invalid-feedback>
-          </b-form-group>
-
-          <b-form-group>
-            <c-button text="Submit" variant="primary" :loading="progressing" @submit="submit"/>
-          </b-form-group>
-        </b-form>
-      </b-col>
-      <b-col cols="2" md="4">
-        <b-form-group
-                class="mb-3"
-                label="Tags"
-                label-for="Tags"
-                label-class="mb-2"
-        >
-          <b-form-input
-                  id="Tags"
-                  placeholder="New tag"
-                  name="Tags"
-          ></b-form-input>
-        </b-form-group>
-        <b-card body-class="pb-0">
-          <b-form-group v-slot="{ ariaDescribedby }">
-            <b-form-checkbox-group
-              id="tags-groups"
-              v-model="model.article.tagList"
-              :aria-describedby="ariaDescribedby"
-              name="tags"
+    <div v-else>
+      <b-row>
+        <b-col cols="12">
+          <div>
+            <h2>Edit Article</h2>
+          </div>
+        </b-col>
+        <b-col cols="12" md="8" class="order-1 order-md-0">
+          <b-form>
+            <b-form-group
+                    class="mb-3"
+                    label="Title"
+                    label-for="Title"
+                    :label-class="{'mb-2': true, 'invalid-label': errors.collect('Title')[0]}"
             >
-              <b-form-checkbox class="mb-4" v-for="tag in tags" :key="tag" :value="tag">
-                <span class="mx-2 h6">{{tag}}</span>
-              </b-form-checkbox>
-            </b-form-checkbox-group>
+              <b-form-input
+                      id="Title"
+                      :class="{'invalid-input': errors.collect('Title')[0]}"
+                      name="Title"
+                      v-model="model.article.title"
+                      v-validate="'required'"
+              ></b-form-input>
+
+              <b-form-invalid-feedback class="mt-2" :state="!errors.has('Title') && null">
+                {{ errors.collect('Title')[0] }}
+              </b-form-invalid-feedback>
+            </b-form-group>
+
+            <b-form-group
+                    class="mb-3"
+                    label="Description"
+                    label-for="Description"
+                    :label-class="{'mb-2': true, 'invalid-label': errors.collect('Description')[0]}"
+            >
+              <b-form-input
+                      id="Description"
+                      :class="{'invalid-input': errors.collect('Description')[0]}"
+                      name="Description"
+                      v-model="model.article.description"
+                      v-validate="'required'"
+              ></b-form-input>
+
+              <b-form-invalid-feedback class="mt-2" :state="!errors.has('Description') && null">
+                {{ errors.collect('Description')[0] }}
+              </b-form-invalid-feedback>
+            </b-form-group>
+
+            <b-form-group
+                    class="mb-3"
+                    label="Body"
+                    label-for="Body"
+                    :label-class="{'mb-2': true, 'invalid-label': errors.collect('Body')[0]}"
+            >
+              <b-textarea
+                      id="Body"
+                      :class="{'invalid-input': errors.collect('Body')[0]}"
+                      name="Body"
+                      v-model="model.article.body"
+                      v-validate="'required'"
+              ></b-textarea>
+
+              <b-form-invalid-feedback class="mt-2" :state="!errors.has('Body') && null">
+                {{ errors.collect('Body')[0] }}
+              </b-form-invalid-feedback>
+            </b-form-group>
+
+            <b-form-group>
+              <c-button text="Submit" variant="primary" :loading="progressing" @submit="submit"/>
+            </b-form-group>
+          </b-form>
+        </b-col>
+        <b-col cols="12" md="4" class="mb-2 mb-md-0 order-0 order-md-1">
+          <b-form-group
+                  class="mb-3"
+                  label="Tags"
+                  label-for="Tags"
+                  label-class="mb-2"
+          >
+            <b-form-input
+                    id="Tags"
+                    placeholder="New tag"
+                    name="Tags"
+            ></b-form-input>
           </b-form-group>
-        </b-card>
-      </b-col>
-    </b-row>
+          <b-card body-class="pb-0">
+            <b-form-group v-slot="{ ariaDescribedby }">
+              <b-form-checkbox-group
+                      id="tags-groups"
+                      v-model="model.article.tagList"
+                      :aria-describedby="ariaDescribedby"
+                      name="tags"
+              >
+                <b-form-checkbox class="mb-4" v-for="tag in tags" :key="tag" :value="tag">
+                  <span class="mx-2 h6">{{tag}}</span>
+                </b-form-checkbox>
+              </b-form-checkbox-group>
+            </b-form-group>
+          </b-card>
+        </b-col>
+      </b-row>
+    </div>
   </b-container>
 </template>
 

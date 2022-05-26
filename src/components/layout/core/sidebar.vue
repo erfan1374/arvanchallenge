@@ -1,5 +1,5 @@
 <template>
-  <nav class="dash-nav vh-100">
+  <nav class="dash-nav min-vh-100">
     <ul class="px-0">
       <template v-for="item in items">
         <li class="text-white d-flex" style="cursor:pointer;" :key="item.id" @click="toggleMenu(item)">

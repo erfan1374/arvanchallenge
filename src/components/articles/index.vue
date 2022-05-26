@@ -6,7 +6,7 @@
       <b-table
         ref="table"
         show-empty
-        stacked="md"
+        stacked="lg"
         :items="items"
         head-variant="bg-table"
         :fields="fields"
@@ -34,6 +34,7 @@
         <template v-slot:cell(createdAt)="{item}">
             <date-display :value="item.createdAt"/>
         </template>
+
         <template v-slot:cell(actions)="{item}">
             <b-dropdown size="sm" dropleft variant="info" no-caret>
               <template #button-content>
@@ -104,7 +105,7 @@
           { key: 'tagList', label: 'Tags', class: 'align-middle'},
           { key: 'body', label: 'Excerpt', class: 'align-middle'},
           { key: 'createdAt', label: 'Created', class: 'align-middle'},
-          { key: 'actions', label: '', class: 'align-middle'},
+          { key: 'actions', label: '', class: 'align-middle text-center'},
         ]
       }
     },

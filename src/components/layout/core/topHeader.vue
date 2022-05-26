@@ -1,7 +1,10 @@
 <template>
   <header class="main-header text-white position-sticky p-3 d-flex flex-row justify-content-between align-items-center" style="top: 0">
     <div>
-      <span class="h6 mb-0">Arvan Challenge</span>
+      <c-button size="sm" variant="outline-secondary" text="" @submit="toggleMenu">
+        <font-awesome-icon icon="bars" class="mx-1 align-middle"/>
+      </c-button>
+      <span class="h6 px-2 mb-0">Arvan Challenge</span>
       <span v-if="$account" class="px-2">
         Welcome {{$account.username}}
       </span>
@@ -30,6 +33,9 @@
       logout () {
         this.$store.commit(types.LOGOUT)
         this.$router.push('/login')
+      },
+      toggleMenu () {
+        this.$emit('toggleMenu')
       }
     }
   }

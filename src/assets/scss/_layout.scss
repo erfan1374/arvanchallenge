@@ -1,12 +1,15 @@
+$navbarWidth: 220px;
 .main-header{
   background: $gray-900;
+  z-index: 90;
 }
 
 .dash-nav{
   background: $primary;
-  min-width: 220px;
-  max-width: 220px;
+  min-width: $navbarWidth;
+  max-width: $navbarWidth;
   list-style: none;
+  transition: all 0.2s;
   li{
     list-style: none;
     transition: all 0.3s;
@@ -20,5 +23,26 @@
     a.active-link{
       background: rgba(255, 255, 255, 0.3) !important;
     }
+  }
+}
+
+.open-side{
+  margin-left: 0;
+}
+.close-side{
+  margin-left: -$navbarWidth;
+}
+
+@media only screen and (max-width: 992px) {
+  .dash-nav{
+    position: fixed;
+    height: 100%;
+    z-index: 3;
+  }
+  .open-side{
+    left: 0;
+  }
+  .close-side{
+    left: -$navbarWidth;
   }
 }

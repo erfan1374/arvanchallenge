@@ -1,12 +1,14 @@
 <template>
-  <b-container>
+  <b-container fluid>
     <b-row>
       <b-col cols="12">
         <div>
           <h2>New Article</h2>
         </div>
       </b-col>
-      <b-col cols="10" md="8">
+    </b-row>
+    <b-row>
+      <b-col cols="12" md="8" class="order-1 order-md-0">
         <b-form>
           <b-form-group
             class="mb-3"
@@ -70,7 +72,7 @@
           </b-form-group>
         </b-form>
       </b-col>
-      <b-col cols="2" md="4">
+      <b-col cols="12" md="4" class="mb-2 mb-md-0 order-0 order-md-1">
         <b-form-group
           class="mb-3"
           label="Tags"
