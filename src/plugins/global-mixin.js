@@ -1,4 +1,4 @@
-const globalOptions = {
+const baseNotifyOptions = {
   showProgressBar: true,
   closeOnClick: true,
   pauseOnHover: true,
@@ -8,12 +8,12 @@ const globalOptions = {
 }
 const errorMsgOptions = {
   timeout: 3000,
-  ...globalOptions
+  ...baseNotifyOptions
 }
 
 const successMsgOptions = {
   timeout: 1500,
-  ...globalOptions
+  ...baseNotifyOptions
 }
 export default {
   install(Vue) {
@@ -34,8 +34,6 @@ export default {
           if (path) this.$router.push({path})
         },
         $fail (err) {
-          // console.log(err.data.message = 'missing authorization credentials')
-          // console.log(err)
           this.progressing = false
           this.$gloabalErrorHandler(err)
         },
@@ -47,6 +45,8 @@ export default {
             }
           } else if (err.data.message){
             this.$showError(err.data.message)
+          } else {
+            this.$showSuccess('unknown error')
           }
         }
       }
