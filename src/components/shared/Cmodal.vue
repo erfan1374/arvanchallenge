@@ -18,9 +18,9 @@
           <b-btn variant="outline-secondary" block class="text-nowrap px-3" @click="hide">
             {{cancelLabel}}
           </b-btn>
-          <b-btn variant="danger" block class="text-nowrap px-3" :disabled="loading" @click="submit">
+          <b-btn variant="danger" block class="text-nowrap text-white px-3" :disabled="loading" @click="submit">
             {{confirmLabel}}
-            <font-awesome-icon v-if="loading" spin icon="circle-notch" class="text-black align-middle mx-1"/>
+            <font-awesome-icon v-if="loading" spin icon="circle-notch" class="align-middle mx-1"/>
           </b-btn>
         </slot>
       </template>

@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <page500 v-if="$offline"/>
+  <div v-else>
     <notifications/>
     <pub v-if="isPublic"></pub>
     <cp v-else/>
@@ -11,9 +12,10 @@
   import cp from "./cp";
   import Notifications from "./core/notification";
   import {mapState} from 'vuex'
+  import Page500 from "../shared/page500";
   export default {
     name: "layout",
-    components: {Notifications, pub, cp},
+    components: {Page500, Notifications, pub, cp},
     computed: {
       ...mapState(['$offline', '$account']),
       isPublic () {

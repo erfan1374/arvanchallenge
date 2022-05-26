@@ -11,23 +11,9 @@ export default class ApiCore {
     this._store = store
   }
 
-  _urlencode (str) {
-    if (str && str.length) {
-      return encodeURIComponent(str)
-    } else {
-      return str
-    }
-  }
 
-  _setUploadProgress () {
-    // this._store.commit(types.SET_UPLOAD_PROGRESS, progress)
-  }
-  _setDownloadProgress () {
-    // this._store.commit(types.SET_DOWNLOAD_PROGRESS, progress)
-  }
-
-  _setOfflineFlag () {
-    // this._store.commit(types.SET_OFFLINE, value)
+  _setOfflineFlag (value) {
+    this._store.commit(types.SET_OFFLINE, value)
   }
 
   _logout () {

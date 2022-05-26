@@ -45,7 +45,7 @@
             </b-form-group>
 
 
-            <c-button :loading="progressing" variant="primary" text="Login" class="w-100 mb-3" @submit="submit"/>
+            <c-button :loading="progressing" variant="primary" text="Login" class="w-100 text-white mb-3" @submit="submit"/>
 
             <b-link to="/register" class="text-decoration-none text-dark">
               Don't have account ? <span class="fw-bold">Register Now</span>

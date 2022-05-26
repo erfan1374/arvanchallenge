@@ -68,7 +68,7 @@
             </b-form-group>
 
             <b-form-group>
-              <c-button text="Submit" variant="primary" :loading="progressing" @submit="submit"/>
+              <c-button text="Submit" variant="primary" class="text-white" :loading="progressing" @submit="submit"/>
             </b-form-group>
           </b-form>
         </b-col>
