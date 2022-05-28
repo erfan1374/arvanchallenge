@@ -5,6 +5,7 @@
       return {
         progressing: false,
         initializing: true,
+        newTag: null,
         tags: [],
         model: {
           article: {
@@ -17,6 +18,19 @@
       }
     },
     methods: {
+      addNewTag () {
+        if (this.newTag) {
+          const isExistTag = this.tags.find(i => i === this.newTag)
+          if (!isExistTag) {
+            this.tags.push(this.newTag)
+            this.sortTagsAlphabetically(this.tags)
+            this.model.article.tagList.push(this.newTag)
+            this.newTag = null
+          } else {
+            this.$showError(`${isExistTag} is exist in tag list`)
+          }
+        }
+      },
       getAllTags () {
         return this.$api.tags.getAll().then(res => {
           this.tags = this.sortTagsAlphabetically(res.tags)

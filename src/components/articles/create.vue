@@ -73,18 +73,24 @@
         </b-form>
       </b-col>
       <b-col cols="12" md="4" class="mb-2 mb-md-0 order-0 order-md-1">
-        <b-form-group
+        <b-input-group
           class="mb-3"
           label="Tags"
           label-for="Tags"
           label-class="mb-2"
         >
+          <template v-slot:append>
+            <b-btn class="text-decoration-none text-white" variant="success" @click="addNewTag" :disabled="!newTag">
+              Add
+            </b-btn>
+          </template>
           <b-form-input
             id="Tags"
             placeholder="New tag"
             name="Tags"
+            v-model.trim="newTag"
           ></b-form-input>
-        </b-form-group>
+        </b-input-group>
         <b-card body-class="pb-0">
           <c-loading class="mb-3" v-if="initializing"/>
           <b-form-group v-else v-slot="{ ariaDescribedby }">
