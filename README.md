@@ -1,4 +1,4 @@
-# menupoly-billpay
+# Arvan challenge
 
 ## Project setup
 ```
@@ -12,18 +12,13 @@ npm run serve
 
 ### Configs
 ```
-
+The main variables of the project (apiServer, ssl, homeUrl) are in the config folder.
 ```
 
 
 ### Compiles and minifies for production
 ```
 npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Customize configuration
